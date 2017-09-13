@@ -35,7 +35,6 @@ app.get('/', function (req, res) {
         }
         this_date = this_date.toISOString().split('T')[0];
         print_titles += '<tr><td>'+this_date+'</td><td><a href="'+file+'">'+file+'</a></td><td>'+this_pages+'</td></tr>'; // 建立所有<a>
-        console.log('<tr><td>'+this_date+'</td><td><a href="'+file+'">'+file+'</a></td><td>'+this_pages+'</td></tr>');
     });
     print_titles += '</table>';
     res.render('index', { these_titles: print_titles });
@@ -50,7 +49,7 @@ app.get('/:name', function (req, res) {
         print_images += '<div><img src="'+target_file+'"></img></div>'; // 建立所有<img>
     })
     
-    res.render('reading', { these_images: print_images });
+    res.render('reading', { these_images: print_images, this_title: req.params.name });
 });
 
 
