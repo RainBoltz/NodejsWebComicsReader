@@ -43,7 +43,7 @@ app.get('/', function (req, res) {
 // 進入 收藏(ex. 127.0.0.1:port/收藏) 時，顯示所有圖片
 app.get('/:name', function (req, res) {
     var print_images = '';
-    var target_folder = './views/img/'+req.params.name+'/';
+    var target_folder = __dirname+'/views/img/'+req.params.name+'/';
 	fs.readdirSync(target_folder).forEach(file => {
         var target_file = target_folder + file;
         print_images += '<div><img src="'+target_file+'"></img></div>'; // 建立所有<img>
