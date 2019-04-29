@@ -45,7 +45,7 @@ app.get('/:name', function (req, res) {
     var print_images = '';
     var target_folder = __dirname+'/views/img/'+req.params.name+'/';
 	fs.readdirSync(target_folder).forEach(file => {
-        var target_file = target_folder + file;
+        var target_file = '/views/img/'+req.params.name+'/' + file;
         print_images += '<div><img src="'+target_file+'"></img></div>'; // 建立所有<img>
     })
     
