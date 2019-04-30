@@ -42,11 +42,21 @@ app.get('/', function (req, res) {
 
 // 進入 收藏(ex. 127.0.0.1:port/收藏) 時，顯示所有圖片
 app.get('/:name', function (req, res) {
+    var this_id = -1;
     var print_images = '';
     var target_folder = __dirname+'/views/img/'+req.params.name+'/';
 	fs.readdirSync(target_folder).forEach(file => {
         var target_file = '/views/img/'+req.params.name+'/' + file;
-        print_images += '<div><img src="'+target_file+'"></img></div>'; // 建立所有<img>
+        if(file.split('_')[0] != this_id){
+            if(file.split('_')[0] != -1){
+                print_images += '</section>';
+            }
+            this_id = parseInt(file.split('_')[0]);
+            print_images += '<section id="ch'+this_id+'"><div><img src="'+target_file+'"></img></div>'; // 建立所有<img>
+        }
+        else{
+            print_images += '<div><img src="'+target_file+'"></img></div>'; // 建立所有<img>
+        }
     })
     
     res.render('reading', { these_images: print_images, this_title: req.params.name });
