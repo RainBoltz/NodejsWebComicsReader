@@ -14,9 +14,9 @@ npm install ./simple-template-handler
 1. put the comics folders into the ` ./view ` folder
     
 2. check the images naming patterns
-    > for ` aaa_bbb.jpg `:
-    >     - `aaa` is the chapter number
-    >     - `bbb` is the page number
+    > for **aaa_bbb.jpg**  :
+    >> **aaa** is the chapter number
+    >> **bbb** is the page number
    
 3. start the server with the command:
     ```bash
